@@ -3,7 +3,7 @@ import React from "react";
 function Hero() {
   return (
     <section className="bg-gray-50">
-      <div className="mx-auto max-w-screen-xl px-4 py-20 lg:flex lg:h-screen">
+      <div className="mx-auto max-w-screen-xl px-4 py-20 lg:flex ">
         <div className="mx-auto max-w-xl text-center">
           <h1 className="text-4xl font-extrabold sm:text-5xl text-center text-gray-800">
             Level Up Your Street Game with

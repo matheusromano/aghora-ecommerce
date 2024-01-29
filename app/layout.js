@@ -1,10 +1,10 @@
 // alterar a fonte
-import { Outfit } from "next/font/google";
+import { Dosis } from "next/font/google";
 import "./globals.css";
 import Footer from "./_components/Footer";
 import Header from "./_components/Header";
 
-const inter = Outfit({ subsets: ["latin"] });
+const inter = Dosis({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",

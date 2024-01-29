@@ -1,13 +1,56 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function Header() {
+  const carouselTexts = [
+    "PRODUTOS ORIGINAIS!",
+    "PARCELE EM ATÉ 10X SEM JUROS",
+    "A MELHOR LOJA DE STREETWARE DE CWB",
+    "1º TROCA GRÁTIS",
+  ];
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTextIndex((prevIndex) =>
+        prevIndex === carouselTexts.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [currentTextIndex]);
+
   return (
-    <header className="bg-baseRed">
+    <header className="bg-white">
+      <div className="h-8 bg-black text-platinum flex items-center justify-center overflow-hidden relative">
+        {carouselTexts.map((text, index) => (
+          <span
+            key={index}
+            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 inline-block text-center text-xs sm:text-sm lg:text-base ${
+              currentTextIndex === index ? "opacity-100" : "opacity-0"
+            } transition-opacity duration-1000 ease-in-out ${
+              currentTextIndex === index ? "hover:underline" : ""
+            }`}
+          >
+            {text}
+          </span>
+        ))}
+      </div>
+
       <div className="mx-auto flex items-center justify-between h-20 px-4 sm:px-6 lg:px-8 bg- shadow-md">
-      <Image src='/logo-v2.png' alt='logo' width={150} height={30} className="mx-auto"/>
+        <Image
+          src="/aghora-v2.svg"
+          alt="logo"
+          width={100}
+          height={10}
+          className="mx-auto"
+        />
         <div className="flex flex-1 items-center justify-end md:justify-between">
-          <nav aria-label="Global" className="hidden md:block">
+          <nav
+            aria-label="Global"
+            className="hidden md:block pl-[25px]" // Remove ml-auto for left-center alignment
+          >
             <ul className="flex items-center gap-6 text-sm">
               <li>
                 <a
@@ -15,7 +58,7 @@ function Header() {
                   href="/"
                 >
                   {" "}
-                  Home{" "}
+                  SHOP{" "}
                 </a>
               </li>
 
@@ -25,7 +68,7 @@ function Header() {
                   href="/"
                 >
                   {" "}
-                  Products{" "}
+                  LOOKBOOK{" "}
                 </a>
               </li>
 
@@ -35,7 +78,7 @@ function Header() {
                   href="/"
                 >
                   {" "}
-                  About Us{" "}
+                  INSIDE AGHORA{" "}
                 </a>
               </li>
 
@@ -45,10 +88,9 @@ function Header() {
                   href="/"
                 >
                   {" "}
-                  Contact Us{" "}
+                  FALE CONOSCO{" "}
                 </a>
               </li>
-
             </ul>
           </nav>
 
