@@ -5,8 +5,12 @@ import BreadCrumb from "../../_components/Breadcrumb";
 import ProductBanner from "./_components/ProductBanner";
 import ProductInfo from "./_components/ProductInfo";
 import ProductList from "../../_components/ProductList";
+import { usePathname } from "next/navigation";
 
 function ProjectDetail({ params }) {
+
+  // Used to get the URL path
+  const path= usePathname();
   const [productDetail, setProductDetail] = useState();
   const [productList, setProductList] = useState([]);
   useEffect(() => {
@@ -30,7 +34,7 @@ function ProjectDetail({ params }) {
   };
   return (
     <div className="p-5 py-13 px-10 md:px-28">
-      <BreadCrumb />
+      <BreadCrumb path={path}/>
       <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 gap-5 sm:gap-8">
         <ProductBanner product={productDetail} />
         <ProductInfo product={productDetail} />

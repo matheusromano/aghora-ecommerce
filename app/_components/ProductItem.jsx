@@ -1,8 +1,8 @@
 import Image from "next/image";
-
+import Link from 'next/link';
 function ProductItem({ product }) {
   return (
-    <div>
+    <Link href={'/product-detail/'+product.id}>
       <div className="mb-4 text-center hover:border m-1 p-1 rounded-lg border-platinum">
         <Image
           src={product?.attributes?.banner.data.attributes.url}
@@ -23,8 +23,8 @@ function ProductItem({ product }) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
-}
+} 
 
 export default ProductItem;
